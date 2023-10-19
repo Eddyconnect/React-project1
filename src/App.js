@@ -1,21 +1,25 @@
 import './App.css';
+import Employee from './components/Employee';
+import { useState } from 'react';
 
 function App() {
+  const [role, setRole] = useState('default role: dev');
+  const showEmployee = true;
   return (
     <div className="App">
-      <header className="App-header"> 
-        <p>
-          Welcome!
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {showEmployee ?
+      <>
+        <input type='text' onChange={(e) => {console.log(e.target.value);
+        setRole(e.target.value);}} />
+        <Employee Name ='Rahim Adeiza' role = 'Cash officer' />
+        <Employee Name = 'Emmanuel Omaji' role = 'Head Teller' />
+        <Employee Name = 'Sesugh Orshi' role = 'ATMC' />
+        <Employee Name = 'Collins Vingil' role = {role} />        
+
+      </>
+       : <p>You do not have access to see this employee</p>
+      }
+      
     </div>
   );
 }
